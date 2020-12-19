@@ -14,12 +14,10 @@ public class Matcher {
 	
 	
 
-	private String nPolice;
+	private String axaCleanName;
 	private String algo;
 	private double similarity;
 	private String ice;
-	private String denom;
-	
 	private String newDenom;
 
 	
@@ -40,12 +38,12 @@ public class Matcher {
 		this.id = id;
 	}
 	
-	public String getnPolice() {
-		return nPolice;
+	public String getAxaCleanName() {
+		return axaCleanName;
 	}
 
-	public void setnPolice(String nPolice) {
-		this.nPolice = nPolice;
+	public void setAxaCleanName(String axaCleanName) {
+		this.axaCleanName = axaCleanName;
 	}
 
 	public String getAlgo() {
@@ -72,11 +70,4 @@ public class Matcher {
 		this.ice = ice;
 	}
 
-	public String getDenom() {
-		return denom;
-	}
-
-	public void setDenom(String denom) {
-		this.denom = denom;
-	}
 }

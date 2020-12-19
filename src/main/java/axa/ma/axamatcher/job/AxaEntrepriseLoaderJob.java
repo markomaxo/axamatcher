@@ -19,6 +19,7 @@ import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 
 import axa.ma.axamatcher.entity.AxaEntreprise;
@@ -68,7 +69,7 @@ public class AxaEntrepriseLoaderJob {
 		FlatFileItemReader<AxaEntreprise> itemReader = new FlatFileItemReader<AxaEntreprise>();
 		itemReader.setLineMapper(lineMapper());
 		itemReader.setLinesToSkip(1);
-		itemReader.setResource(new ClassPathResource("data/entreprise-iard.csv"));
+		itemReader.setResource(new FileSystemResource("data/entreprise-iard.csv"));
 		return itemReader;
 	}
 

@@ -17,7 +17,7 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 
 import axa.ma.axamatcher.entity.OmpicEntreprise;
@@ -65,7 +65,7 @@ public class OmpicEntrepriseLoaderJob {
 		itemReader.setLineMapper(lineMapper());
 		itemReader.setLinesToSkip(1);
 		//itemReader.setMaxItemCount(100);
-		itemReader.setResource(new ClassPathResource("data/ompic/2016.csv"));
+		itemReader.setResource(new FileSystemResource("data/entreprise-ompic.csv"));
 		return itemReader;
 	}
 	
@@ -91,6 +91,8 @@ public class OmpicEntrepriseLoaderJob {
 		return new ItemProcessor<OmpicEntreprise, OmpicEntreprise>() {
 			public OmpicEntreprise process(OmpicEntreprise ompicEntreprise) throws Exception {
 				ompicEntreprise.setDenomClean(sanitizer.clean(ompicEntreprise.getDenom()));
+				ompicEntreprise.setDenomCleanLength(ompicEntreprise.getDenom().length());
+				
 				return ompicEntreprise;
 			}
 		};

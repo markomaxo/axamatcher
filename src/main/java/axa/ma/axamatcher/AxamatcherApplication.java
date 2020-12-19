@@ -27,12 +27,12 @@ public class AxamatcherApplication {
 		JobLauncher jobLauncher = (JobLauncher) ctx.getBean("jobLauncher");
 
 		// AxaEntrepriseLoaderJob Job
-		//AxaEntrepriseLoaderJob axaEntrepriseLoaderJob = (AxaEntrepriseLoaderJob) ctx.getBean("axaEntrepriseLoaderJob");
+		AxaEntrepriseLoaderJob axaEntrepriseLoaderJob = (AxaEntrepriseLoaderJob) ctx.getBean("axaEntrepriseLoaderJob");
 		//runJob(jobLauncher, axaEntrepriseLoaderJob.run());
 	
 
 		// OmpicEntrepriseLoaderJobs Job
-		//OmpicEntrepriseLoaderJob ompicEntrepriseLoaderJob = (OmpicEntrepriseLoaderJob) ctx.getBean("ompicEntrepriseLoaderJob");
+		OmpicEntrepriseLoaderJob ompicEntrepriseLoaderJob = (OmpicEntrepriseLoaderJob) ctx.getBean("ompicEntrepriseLoaderJob");
 		//runJob(jobLauncher, ompicEntrepriseLoaderJob.run());
 		
 		

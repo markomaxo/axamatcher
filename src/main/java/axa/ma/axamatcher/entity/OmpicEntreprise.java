@@ -11,7 +11,9 @@ public class OmpicEntreprise {
 	private String ville;
 	private String denom;
 	private String denomSaisie;
+	
 	private String denomClean;
+	private Integer denomCleanLength;
 	
 	
 	public String getIce() {
@@ -49,6 +51,13 @@ public class OmpicEntreprise {
 	}
 	public void setDenomClean(String denomClean) {
 		this.denomClean = denomClean;
+	}
+	
+	public Integer getDenomCleanLength() {
+		return denomCleanLength;
+	}
+	public void setDenomCleanLength(Integer denomCleanLength) {
+		this.denomCleanLength = denomCleanLength;
 	}
 
 	
