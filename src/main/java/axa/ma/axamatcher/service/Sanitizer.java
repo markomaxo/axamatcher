@@ -13,6 +13,8 @@ public class Sanitizer {
 				.replace("é","e")
 				.replace("è","e")
 				.replace("ê","e")
+				.replace(" STE ","") 
+				.replace(" S.A.R.L ","")
 				.replaceAll("[^a-zA-Z0-9]","")
 				.replace("sarl","");
 		
