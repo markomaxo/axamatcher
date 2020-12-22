@@ -90,14 +90,10 @@ public class MatcherJob {
 				
 				for (AxaEntreprise entreprise : items) {
 
-					List<Matcher> matchersList = matchFinder.findMatcher(entreprise);
-
-					for (Matcher matcher : matchersList) {
-
+					Matcher matcher = matchFinder.findMatcher(entreprise);
+					if (matcher.getSimilarity() >0) {
 						matcherRepository.save(matcher);
-
 					}
-
 				}
 
 			}

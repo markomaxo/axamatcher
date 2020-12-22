@@ -16,7 +16,7 @@ public class Matcher {
 
 	private String axaCleanName;
 	private String algo;
-	private double similarity;
+	private double similarity =0.0;
 	private String ice;
 	private String newDenom;
 
