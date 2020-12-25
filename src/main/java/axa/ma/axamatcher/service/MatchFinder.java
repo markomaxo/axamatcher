@@ -76,7 +76,7 @@ public class MatchFinder {
 
 			}
 
-			if (sim > 0.9 &&   sim >= result.getSimilarity() ) {
+			if (sim > 0.85 &&   sim >= result.getSimilarity() ) {
 				result=toMatcher(axaEntrepise, ompicEntrerise, "avglevenrat", sim);
 			}
 
