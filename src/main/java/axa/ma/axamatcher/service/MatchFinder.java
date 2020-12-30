@@ -95,7 +95,7 @@ public class MatchFinder {
 		matcher.setSimilarity(similarity);
 		matcher.setNewDenom(ampicEntreprise.getDenom());
 		matcher.setIce(ampicEntreprise.getIce());
-
+		matcher.setSource("ompic");
 		return matcher;
 
 	}

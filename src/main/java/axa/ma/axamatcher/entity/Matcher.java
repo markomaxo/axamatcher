@@ -19,8 +19,18 @@ public class Matcher {
 	private double similarity =0.0;
 	private String ice;
 	private String newDenom;
+	
+	private String source;
 
 	
+
+	public String getSource() {
+		return source;
+	}
+
+	public void setSource(String source) {
+		this.source = source;
+	}
 
 	public String getNewDenom() {
 		return newDenom;
