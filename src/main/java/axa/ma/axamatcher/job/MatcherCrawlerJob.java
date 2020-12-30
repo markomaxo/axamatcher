@@ -68,7 +68,7 @@ public class MatcherCrawlerJob {
 		reader.setSql(
 			" select distinct axa_entreprise.nom_clean as nom_clean , axa_entreprise.nom as nom ,  axa_entreprise.ville  as ville from axa_entreprise\n" + 
 			"left join  matcher on matcher.axa_clean_name=axa_entreprise.nom_clean\n" + 
-			"where matcher.axa_clean_name is null limit 10");
+			"where matcher.axa_clean_name is null limit 100");
 		reader.setDataSource(dataSource);
 		reader.setRowMapper(
 			(ResultSet resultSet, int rowNum) -> {
