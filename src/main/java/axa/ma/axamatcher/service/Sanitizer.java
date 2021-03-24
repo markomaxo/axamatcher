@@ -26,6 +26,7 @@ public class Sanitizer {
         input = pattern.matcher(strTemp).replaceAll("");
         
         // autres vérifications
+        
         return input
                 .replace(" & "," et ")
                 .replaceAll("l'"," ")
