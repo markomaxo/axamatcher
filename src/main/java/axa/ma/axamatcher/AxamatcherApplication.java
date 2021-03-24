@@ -45,6 +45,7 @@ public class AxamatcherApplication {
 		MatcherJob matcherJob = (MatcherJob) ctx.getBean("matcherJob");
 		//runJob(jobLauncher, matcherJob.run());
 
+		
 	}
 
 	private static void runJob(JobLauncher jobLauncher, Job job) {
