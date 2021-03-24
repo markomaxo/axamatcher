@@ -12,6 +12,6 @@ import axa.ma.axamatcher.entity.Matcher;
 public interface MatcherRepository  extends JpaRepository<Matcher, Integer>{
 	
 	
-	  long countByAxaCleanName(String axaCleanName);
+	  long countByompicDenominationHashee(String ompicDenominationHashee);
 
 }

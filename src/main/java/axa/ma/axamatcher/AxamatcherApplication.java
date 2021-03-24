@@ -13,9 +13,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import axa.ma.axamatcher.job.AxaEntrepriseLoaderJob;
-import axa.ma.axamatcher.job.MatcherCrawlerJob;
+
 import axa.ma.axamatcher.job.MatcherJob;
 import axa.ma.axamatcher.job.OmpicEntrepriseLoaderJob;
+import axa.ma.axamatcher.service.Sanitizer;
 
 @SpringBootApplication
 @EnableBatchProcessing
@@ -23,26 +24,25 @@ import axa.ma.axamatcher.job.OmpicEntrepriseLoaderJob;
 public class AxamatcherApplication {
 
 	public static void main(String[] args) {
+		
+		//String input="";
+		//System.out.println(new Sanitizer().clean(input));
 
 		ApplicationContext ctx = SpringApplication.run(AxamatcherApplication.class, args);
 		JobLauncher jobLauncher = (JobLauncher) ctx.getBean("jobLauncher");
 
 		// AxaEntrepriseLoaderJob Job
 		AxaEntrepriseLoaderJob axaEntrepriseLoaderJob = (AxaEntrepriseLoaderJob) ctx.getBean("axaEntrepriseLoaderJob");
-		// runJob(jobLauncher, axaEntrepriseLoaderJob.run());
+		//runJob(jobLauncher, axaEntrepriseLoaderJob.run());
 
 		// OmpicEntrepriseLoaderJobs Job
 		OmpicEntrepriseLoaderJob ompicEntrepriseLoaderJob = (OmpicEntrepriseLoaderJob) ctx
 				.getBean("ompicEntrepriseLoaderJob");
-		// runJob(jobLauncher, ompicEntrepriseLoaderJob.run());
+		//runJob(jobLauncher, ompicEntrepriseLoaderJob.run());
 
-		// MatcherJob Job
+	// MatcherJob Job
 		MatcherJob matcherJob = (MatcherJob) ctx.getBean("matcherJob");
-		// runJob(jobLauncher, matcherJob.run());
-
-		// MatcherJob Job
-		MatcherCrawlerJob matcherCrawlerJob = (MatcherCrawlerJob) ctx.getBean("matcherCrawlerJob");
-		runJob(jobLauncher, matcherCrawlerJob.run());
+		runJob(jobLauncher, matcherJob.run());
 
 	}
 

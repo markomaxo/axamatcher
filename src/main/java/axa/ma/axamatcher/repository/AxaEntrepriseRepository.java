@@ -15,5 +15,10 @@ import axa.ma.axamatcher.entity.OmpicEntreprise;
 public interface AxaEntrepriseRepository  extends JpaRepository<AxaEntreprise, String>{
 	
 	
+	List<AxaEntreprise> findByAxaDenominationHacheeIn(List<String> list);
 	
+	List<AxaEntreprise> findByAxaDenominationHacheeNotIn(List<String> list);
+	
+	@Query(value = "SELECT * FROM public.axa_entreprise left join public.ompic_entreprise on ompic_entreprise.ompic_denomination_hashee=axa_entreprise.axa_denomination_hachee", nativeQuery = true)
+	List<AxaEntreprise> findExact();
 }

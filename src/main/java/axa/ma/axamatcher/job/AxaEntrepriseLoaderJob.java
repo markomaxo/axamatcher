@@ -17,8 +17,6 @@ import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
 import org.springframework.batch.item.file.transform.DelimitedLineTokenizer;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.stereotype.Service;
 
@@ -69,7 +67,8 @@ public class AxaEntrepriseLoaderJob {
 		FlatFileItemReader<AxaEntreprise> itemReader = new FlatFileItemReader<AxaEntreprise>();
 		itemReader.setLineMapper(lineMapper());
 		itemReader.setLinesToSkip(1);
-		itemReader.setResource(new FileSystemResource("data/entreprise-iard.csv"));
+		//itemReader.setMaxItemCount(300);
+		itemReader.setResource(new FileSystemResource("data/AXA not found in 100%.csv"));
 		return itemReader;
 	}
 
@@ -92,7 +91,7 @@ public class AxaEntrepriseLoaderJob {
 	public ItemProcessor<AxaEntreprise, AxaEntreprise> processor() {
 		return new ItemProcessor<AxaEntreprise, AxaEntreprise>() {
 			public AxaEntreprise process(AxaEntreprise axaEntreprise) throws Exception {
-				axaEntreprise.setNomClean(sanitizer.clean(axaEntreprise.getNom()));
+				axaEntreprise.setAxaDenominationHachee(sanitizer.clean(axaEntreprise.getAxaDenomination()));
 				return axaEntreprise;
 			}
 		};
@@ -101,8 +100,9 @@ public class AxaEntrepriseLoaderJob {
 	public LineMapper<AxaEntreprise> lineMapper() {
 		DefaultLineMapper<AxaEntreprise> lineMapper = new DefaultLineMapper<AxaEntreprise>();
 		DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
-		lineTokenizer.setNames(new String[] { "nPolice", "rc", "ville", "nom", "dateexpiration" });
-		lineTokenizer.setIncludedFields(new int[] { 0, 1, 2, 3, 4 });
+		//lineTokenizer.setDelimiter(",");
+        lineTokenizer.setNames(new String[] { "idaxa","police","axa_produit", "axa_situation_police","axa_date_premier_effet", "date_resiliation","axa_Abreviation", "axa_denomination","axa_adresse","axa_suite_adresse","axa_code_ville", "axa_ville" ,"axa_rc"  });
+        lineTokenizer.setIncludedFields(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 });
 		BeanWrapperFieldSetMapper<AxaEntreprise> fieldSetMapper = new BeanWrapperFieldSetMapper<AxaEntreprise>();
 		fieldSetMapper.setTargetType(AxaEntreprise.class);
 		lineMapper.setLineTokenizer(lineTokenizer);

@@ -1,5 +1,6 @@
 package axa.ma.axamatcher.job;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,7 +61,7 @@ public class MatcherJob {
 	public Step step() {
 		return stepBuilderFactory
 				.get("step")
-				.<AxaEntreprise, AxaEntreprise>chunk(10)
+				.<AxaEntreprise, AxaEntreprise>chunk(300)
 				.reader(reader())
 				.writer(writer())
 				.listener(listener())
@@ -70,10 +71,10 @@ public class MatcherJob {
 	public RepositoryItemReader<AxaEntreprise> reader() {
 
 		HashMap sorts = new HashMap<>();
-		sorts.put("nPolice", Direction.ASC);
+		sorts.put("police", Direction.ASC);
 		RepositoryItemReader<AxaEntreprise> reader = new RepositoryItemReader<AxaEntreprise>();
 		reader.setRepository(axaRepository);
-		reader.setPageSize(10);
+		reader.setPageSize(300);
 	    //reader.setMaxItemCount(100);
 		reader.setSort(sorts);
 		reader.setMethodName("findAll");
@@ -87,14 +88,12 @@ public class MatcherJob {
 			@Override
 			public void write(List<? extends AxaEntreprise> items) throws Exception {
 				
-				
-				for (AxaEntreprise entreprise : items) {
-
-					Matcher matcher = matchFinder.findMatcher(entreprise);
+				items.parallelStream().forEach(l ->{
+					Matcher matcher = matchFinder.findMatcher(l);
 					if (matcher.getSimilarity() >0) {
 						matcherRepository.save(matcher);
 					}
-				}
+				});
 
 			}
 

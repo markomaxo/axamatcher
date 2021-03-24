@@ -14,12 +14,12 @@ import axa.ma.axamatcher.entity.OmpicEntreprise;
 @Repository
 public interface OmpicEntrepriseRepository  extends JpaRepository<OmpicEntreprise, String>{
 	
-	@Query(value="select o from OmpicEntreprise o where o.ville like ?1 and  o.denomCleanLength  between ?2  and   ?3  ")
+	@Query(value="select o from OmpicEntreprise o where o.ompicVille like ?1 and  o.ompicDenominationHasheeLength  between ?2  and   ?3  ")
 	List<OmpicEntreprise> findByVille( String ville, Integer l1, Integer l2);
 	
 	
 	
-	@Query(value="select o from OmpicEntreprise o  where o.denomCleanLength  between ?1  and   ?2  ")
+	@Query(value="select o from OmpicEntreprise o  where o.ompicDenominationHasheeLength  between ?1  and   ?2  ")
 	List<OmpicEntreprise> findByLenght( Integer l1,  Integer l2);
 
 }

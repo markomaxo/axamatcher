@@ -65,7 +65,7 @@ public class OmpicEntrepriseLoaderJob {
 		itemReader.setLineMapper(lineMapper());
 		itemReader.setLinesToSkip(1);
 		//itemReader.setMaxItemCount(100);
-		itemReader.setResource(new FileSystemResource("data/entreprise-ompic.csv"));
+		itemReader.setResource(new FileSystemResource("data/ompic.csv"));
 		return itemReader;
 	}
 	
@@ -90,8 +90,8 @@ public class OmpicEntrepriseLoaderJob {
 	public ItemProcessor<OmpicEntreprise, OmpicEntreprise> processor() {
 		return new ItemProcessor<OmpicEntreprise, OmpicEntreprise>() {
 			public OmpicEntreprise process(OmpicEntreprise ompicEntreprise) throws Exception {
-				ompicEntreprise.setDenomClean(sanitizer.clean(ompicEntreprise.getDenom()));
-				ompicEntreprise.setDenomCleanLength(ompicEntreprise.getDenom().length());
+				ompicEntreprise.setOmpicDenominationHashee(sanitizer.clean(ompicEntreprise.getOmpicDenomination()));
+				ompicEntreprise.setOmpicDenominationHasheeLength(ompicEntreprise.getOmpicDenomination().length());
 				
 				return ompicEntreprise;
 			}
@@ -101,8 +101,8 @@ public class OmpicEntrepriseLoaderJob {
 	public LineMapper<OmpicEntreprise> lineMapper() {
 		DefaultLineMapper<OmpicEntreprise> lineMapper = new DefaultLineMapper<OmpicEntreprise>();
 		DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
-		lineTokenizer.setNames(new String[] { "ice", "rc", "ville", "denom", "denomSaisie" });
-		lineTokenizer.setIncludedFields(new int[] { 0, 1, 2, 3, 4 });
+		lineTokenizer.setNames(new String[] {"bilid","ompic_ice","ompic_code_tribunal","ompic_rc","ompic_denomination","ompic_forme_juridique","ompic_sigle","ompic_capital","ompic_date_immatriculation","ompic_date_radiation","ompic_adresse","ompic_code_ville","ompic_activite","ompic_flag_siege","ompic_codes_activite","ompic_flag_nma", "ompic_ville"});
+        lineTokenizer.setIncludedFields(new int[] { 0, 1, 2, 3, 4, 5, 6, 7,8,9,10,11,12,13,14,15, 16 });
 		BeanWrapperFieldSetMapper<OmpicEntreprise> fieldSetMapper = new BeanWrapperFieldSetMapper<OmpicEntreprise>();
 		fieldSetMapper.setTargetType(OmpicEntreprise.class);
 		lineMapper.setLineTokenizer(lineTokenizer);
