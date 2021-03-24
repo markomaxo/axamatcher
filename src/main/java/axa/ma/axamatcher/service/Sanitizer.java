@@ -19,6 +19,7 @@ public class Sanitizer {
         // mettre en miniscule et eléminé les espaces en début et fin
         input = input.toLowerCase().trim();
         
+        
         // remplacer les accents
         String strTemp = Normalizer.normalize(input, Normalizer.Form.NFD);
         Pattern pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
