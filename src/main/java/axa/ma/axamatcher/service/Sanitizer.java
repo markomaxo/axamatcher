@@ -43,7 +43,6 @@ public class Sanitizer {
                 .replaceAll(" sca$","")
                 .replaceAll(" snc$","")
                 .replaceAll(" gie$","")
-
                 .replaceAll(" of "," ")
                 .replaceAll("^ste ","")
                 .replaceAll("^ste ","")
@@ -55,7 +54,6 @@ public class Sanitizer {
                 .replaceAll("^les ","")
                 .replaceAll(" le "," ")
                 .replaceAll(" la "," ")
-                
                 .replaceAll(" de "," ")
                 .replaceAll(" des "," ")
                 .replaceAll(" de "," ")
