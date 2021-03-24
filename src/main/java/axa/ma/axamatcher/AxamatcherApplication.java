@@ -26,6 +26,7 @@ public class AxamatcherApplication {
 	public static void main(String[] args) {
 		
 		//String input="";
+		
 		//System.out.println(new Sanitizer().clean(input));
 
 		ApplicationContext ctx = SpringApplication.run(AxamatcherApplication.class, args);

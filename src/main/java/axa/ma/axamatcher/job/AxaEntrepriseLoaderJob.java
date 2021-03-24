@@ -68,7 +68,7 @@ public class AxaEntrepriseLoaderJob {
 		itemReader.setLineMapper(lineMapper());
 		itemReader.setLinesToSkip(1);
 		//itemReader.setMaxItemCount(300);
-		itemReader.setResource(new FileSystemResource("data/AXA not found in 100%.csv"));
+		itemReader.setResource(new FileSystemResource("data/axa.csv"));
 		return itemReader;
 	}
 
