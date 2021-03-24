@@ -40,11 +40,10 @@ public class AxamatcherApplication {
 		OmpicEntrepriseLoaderJob ompicEntrepriseLoaderJob = (OmpicEntrepriseLoaderJob) ctx
 				.getBean("ompicEntrepriseLoaderJob");
 		//runJob(jobLauncher, ompicEntrepriseLoaderJob.run());
-		
 
 	// MatcherJob Job
 		MatcherJob matcherJob = (MatcherJob) ctx.getBean("matcherJob");
-		runJob(jobLauncher, matcherJob.run());
+		//runJob(jobLauncher, matcherJob.run());
 
 	}
 
